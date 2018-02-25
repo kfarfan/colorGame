@@ -1,6 +1,7 @@
 let colors = generateRandomColors(6);
 var pickedColor = pickColor();
 var h1 = document.querySelector('h1');
+var resetButton = document.getElementById('reset');
 
 document.getElementById('title').textContent = pickedColor;
 var messageDisplay = document.querySelector("#message");
@@ -64,3 +65,8 @@ function randomColor(){
 
 
 }
+
+resetButton.addEventListener('click', function(){
+  //when clicked, the game resets with new colors
+  colors = generateRandomColors(6);
+});
