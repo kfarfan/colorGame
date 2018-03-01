@@ -7,6 +7,7 @@ var messageDisplay = document.getElementById("message");
 var h1 = document.querySelector('h1');
 var easyMode = document.getElementById('easyMode');
 var hardMode = document.getElementById('hardMode');
+var easy = false;
 
 colorDisplay.textContent = pickedColor;
 
@@ -33,6 +34,7 @@ for(var i = 0; i < squares.length; i++){
 }
 
 hardMode.addEventListener('click', function(){
+  easy = false;
   h1.style.backgroundColor = '#232323';
   colors = generateRandomColors(6);
   pickedColor = pickColor();
@@ -55,6 +57,29 @@ hardMode.addEventListener('click', function(){
 
 });
 
+easyMode.addEventListener('click', function(){
+  easy = true;
+  h1.style.backgroundColor = '#232323';
+  colors = generateRandomColors(3);
+  pickedColor = pickColor();
+  colorDisplay.textContent = pickedColor;
+  for(var i = 0; i < squares.length; i++){
+    squares[i].style.backgroundColor = colors[i];
+
+    squares[i].addEventListener('click', function(){
+      var clickedColor = this.style.backgroundColor;
+      if(clickedColor === pickedCOlor){
+        messageDisplay.textContent = "correct!";
+        changeColors(clickedColor);
+        h1.style.backgroundColor = clickedColor;
+      } else {
+      this.style.backgroundColor = '#232323';
+      messageDisplay.textContent = "Try Again";
+      }
+    })
+  }
+})
+
 
 function changeColors(color){
   //loop through all squares
@@ -65,14 +90,29 @@ function changeColors(color){
 }
 
 function pickColor(){
-  var random = Math.floor(Math.random() * colors.length)
-  return colors[random];
+  if(easy){
+    var random = Math.floor(Math.random() * 3)
+    return colors[random];
+  } else {
+    var random = Math.floor(Math.random() * colors.length)
+    return colors[random];
+
+  }
 }
 
 function generateRandomColors(num){
   //make an array
   var arr = [];
   //repeat num times
+  if(easy){
+    for(var i = 0; i < num; i++){
+      arr.push(randomColor());
+    }
+    arr[3] = '#232323';
+    arr[4] = '#232323';
+    arr[5] = '#232323';
+    return arr;
+  }
   for(var i = 0; i < num; i++){
     //get random color and push into array
     arr.push(randomColor());
