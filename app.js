@@ -8,6 +8,8 @@ var h1 = document.querySelector('h1');
 var easyMode = document.getElementById('easyMode');
 var hardMode = document.getElementById('hardMode');
 var container = document.getElementById('container');
+var streak = document.getElementById('streak');
+var streakCount = 0;
 var easy = false;
 
 colorDisplay.textContent = pickedColor;
@@ -25,10 +27,14 @@ for(var i = 0; i < squares.length; i++){
       messageDisplay.textContent = "Correct!";
       changeColors(clickedColor);
       h1.style.backgroundColor = clickedColor;
+      streakCount += 1;
+      streak.textContent = streakCount
 
     } else {
       this.style.backgroundColor = '#232323';
       messageDisplay.textContent = "Try Again";
+      streakCount = 0;
+      streak.textContent = streakCount
 
     }
   })
@@ -50,9 +56,13 @@ hardMode.addEventListener('click', function(){
         messageDisplay.textContent = "correct!";
         changeColors(clickedColor);
         h1.style.backgroundColor = clickedColor;
+        streakCount += 1;
+        streak.textContent = streakCount
       } else {
       this.style.backgroundColor = '#232323';
       messageDisplay.textContent = "Try Again";
+      streakCount = 0;
+      streak.textContent = streakCount
       }
     })
   }
