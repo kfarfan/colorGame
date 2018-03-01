@@ -7,6 +7,7 @@ var messageDisplay = document.getElementById("message");
 var h1 = document.querySelector('h1');
 var easyMode = document.getElementById('easyMode');
 var hardMode = document.getElementById('hardMode');
+var container = document.getElementById('container');
 var easy = false;
 
 colorDisplay.textContent = pickedColor;
@@ -36,6 +37,7 @@ for(var i = 0; i < squares.length; i++){
 hardMode.addEventListener('click', function(){
   easy = false;
   h1.style.backgroundColor = '#232323';
+  container.style.maxWidth = '700px';
   colors = generateRandomColors(6);
   pickedColor = pickColor();
   colorDisplay.textContent = pickedColor;
@@ -60,6 +62,7 @@ hardMode.addEventListener('click', function(){
 easyMode.addEventListener('click', function(){
   easy = true;
   h1.style.backgroundColor = '#232323';
+  container.style.maxWidth = '1200px';
   colors = generateRandomColors(3);
   pickedColor = pickColor();
   colorDisplay.textContent = pickedColor;

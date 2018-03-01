@@ -5,6 +5,8 @@ body {
 h1{
   color: white;
   text-align: center;
+  height: 50px;
+  padding: 20px;
 }
 
 #container2{
@@ -17,11 +19,37 @@ h1{
   width: 30%;
   padding-bottom: 30%;
   margin: 1.66%;
+  border-radius: 20%;
+
+}
+.square:hover{
+  animation: shake 0.82s cubic-bezier(.36,.17,.69,.27) both;
+ transform: translate3d(0, 0, 0);
+ backface-visibility: hidden;
+ perspective: 1000px;
+}
+
+@keyframes shake {
+ 10%, 90% {
+   transform: translate3d(-1px, 0, 0);
+ }
+
+ 20%, 80% {
+   transform: translate3d(2px, 2, 0);
+ }
+
+ 30%, 50%, 70% {
+   transform: translate3d(-4px, 0, 0);
+ }
+
+ 40%, 60% {
+   transform: translate3d(4px, 0, 0);
+ }
 }
 
 #container {
   margin: 0 auto;
-  max-width: 600px;
+  max-width: 700px;
 }
 
 span {
